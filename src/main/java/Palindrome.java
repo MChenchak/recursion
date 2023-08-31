@@ -9,19 +9,18 @@ public class Palindrome {
         if (n == 0)
             return true;
 
-        return checkChars(str, 0, n - 1);
+        return checkChars(str, 0);
     }
 
-    private static boolean checkChars(String str, int s, int e) {
-        if (s == e)
+    private static boolean checkChars(String str, int i) {
+        if (i > str.length() / 2) {
             return true;
-
-        if ((str.charAt(s)) != (str.charAt(e)))
+        }
+        if (str.charAt(i) != (str.charAt(str.length() - 1 - i))) {
             return false;
+        }
 
-        if (s < e + 1)
-            return checkChars(str, s + 1, e - 1);
-
-        return true;
+        i = i + 1;
+        return checkChars(str, i);
     }
 }
