@@ -10,7 +10,6 @@ public class SecondMax {
         return getSecondMaxRecursively(list, 0, null, null);
     }
 
-
     private static Integer getSecondMaxRecursively(List<Integer> list, int i, Integer firstMax, Integer secondMax) {
         if (i == list.size()) {
            return secondMax;
