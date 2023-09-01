@@ -3,7 +3,7 @@ import java.util.List;
 public class SecondMax {
 
     public static int getSecondMax(List<Integer> list) {
-        if (list == null || list.isEmpty()) {
+        if (list == null || list.isEmpty() || list.size()<2) {
             throw new IllegalArgumentException();
         }
         return getTwoOfMax(list)[1];

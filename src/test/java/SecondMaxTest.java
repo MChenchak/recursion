@@ -44,4 +44,12 @@ class SecondMaxTest {
 
         assertEquals(-1, secondMax);
     }
+
+    @Test
+    @DisplayName("Массив из одного элемента")
+    void onlyOneElement() {
+        List<Integer> list = List.of(4);
+
+        assertThrows(IllegalArgumentException.class, () -> SecondMax.getSecondMax(list));
+    }
 }
