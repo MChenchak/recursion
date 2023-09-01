@@ -6,23 +6,24 @@ public class SecondMax {
         if (list == null || list.isEmpty() || list.size()<2) {
             throw new IllegalArgumentException();
         }
-        return getTwoOfMax(list)[1];
+
+        return getSecondMaxRecursively(list, 0, null, null);
     }
 
-    private static Integer[] getTwoOfMax(List<Integer> list) {
-        if (list.size() == 1) {
-            return new Integer[]{list.get(0), null};
+
+    private static Integer getSecondMaxRecursively(List<Integer> list, int i, Integer firstMax, Integer secondMax) {
+        if (i == list.size()) {
+           return secondMax;
         }
 
-        Integer[] arrOfMax = getTwoOfMax(list.subList(1, list.size()));
-
-        if (list.get(0) > arrOfMax[0]) {
-            arrOfMax[1] = arrOfMax[0];
-            arrOfMax[0] = list.get(0);
-        } else if (arrOfMax[1] == null || list.get(0) > arrOfMax[1]) {
-            arrOfMax[1] = list.get(0);
+        if (firstMax == null) {
+            firstMax = list.get(i);
+            secondMax = list.get(i);
+        } else if (list.get(i) > firstMax) {
+            secondMax = firstMax;
+            firstMax = list.get(i);
         }
 
-        return arrOfMax;
+        return getSecondMaxRecursively(list, i + 1, firstMax, secondMax);
     }
 }
