@@ -9,7 +9,6 @@ public class EvenNumber {
         if (list.get(s) % 2 == 0)
             System.out.println(list.get(s));
 
-        s = s + 1;
-        printEven(list, s);
+        printEven(list, s + 1);
     }
 }

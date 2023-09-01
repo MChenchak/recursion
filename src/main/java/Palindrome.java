@@ -20,7 +20,6 @@ public class Palindrome {
             return false;
         }
 
-        i = i + 1;
-        return checkChars(str, i);
+        return checkChars(str, i + 1);
     }
 }

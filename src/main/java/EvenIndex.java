@@ -9,7 +9,6 @@ public class EvenIndex {
         if (index % 2 == 0)
             System.out.println(list.get(index));
 
-        index = index + 1;
-        printValuesFromEven(list, index);
+        printValuesFromEven(list, index + 1);
     }
 }
