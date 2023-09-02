@@ -28,11 +28,11 @@ class SecondMaxTest {
     @Test
     @DisplayName("Все числа >= 0")
     void positive() {
-        List<Integer> list = List.of(12,45,34,234,1);
+        List<Integer> list = List.of(500, 500, 45,34,500,1);
 
         int secondMax = SecondMax.getSecondMax(list);
 
-        assertEquals(45, secondMax);
+        assertEquals(500, secondMax);
     }
 
     @Test

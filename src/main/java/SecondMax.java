@@ -7,7 +7,7 @@ public class SecondMax {
             throw new IllegalArgumentException();
         }
 
-        return getSecondMaxRecursively(list, 0, list.get(0), list.get(0));
+        return getSecondMaxRecursively(list, 0, list.get(0), list.get(1));
     }
 
     private static Integer getSecondMaxRecursively(List<Integer> list, int i, Integer firstMax, Integer secondMax) {

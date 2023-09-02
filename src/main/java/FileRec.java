@@ -1,39 +1,32 @@
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FileRec {
 
-    public static void printDirectoryTree(String path) {
+    public static List<File> printDirectoryTree(String path) {
         if (path == null || path.isBlank())
             throw new IllegalArgumentException("Указан некорректный path");
 
         File dir = new File(path);
 
-        if (dir.exists() && dir.isDirectory()) {
-            File[] arr = dir.listFiles();
-            recursivelyPrint(arr, 0, 0);
+        if (!(dir.exists() && dir.isDirectory())) {
+            throw new IllegalArgumentException("File is not a directory");
         }
+
+        File[] arr = dir.listFiles();
+        return findRecersively(arr, 0, new ArrayList<>());
     }
 
-    private static void recursivelyPrint(File[] arr, int index, int level) {
+    private static List<File> findRecersively(File[] arr, int index, List<File> files) {
         if (index == arr.length)
-            return;
-
-        // проставление отступов для древовидного отображения в выводе
-        for (int i = 0; i < level; i++)
-            System.out.print("\t");
+            return files;
 
         if (arr[index].isFile())
-            System.out.println(arr[index].getName());
+            files.add(arr[index]);
+        else if (arr[index].isDirectory())
+            findRecersively(arr[index].listFiles(), 0, files);
 
-        else if (arr[index].isDirectory()) {
-            System.out.println("[" + arr[index].getName()
-                    + "]");
-
-            recursivelyPrint(arr[index].listFiles(), 0,
-                    level + 1);
-        }
-
-        recursivelyPrint(arr, ++index, level);
-
+        return findRecersively(arr, ++index, files);
     }
 }
