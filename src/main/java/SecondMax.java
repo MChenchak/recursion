@@ -7,21 +7,19 @@ public class SecondMax {
             throw new IllegalArgumentException();
         }
 
-        return getSecondMaxRecursively(list, 0, null, null);
+        return getSecondMaxRecursively(list, 0, list.get(0), list.get(0));
     }
-
 
     private static Integer getSecondMaxRecursively(List<Integer> list, int i, Integer firstMax, Integer secondMax) {
         if (i == list.size()) {
            return secondMax;
         }
 
-        if (firstMax == null) {
-            firstMax = list.get(i);
-            secondMax = list.get(i);
-        } else if (list.get(i) > firstMax) {
+        if (list.get(i) > firstMax) {
             secondMax = firstMax;
             firstMax = list.get(i);
+        } else if (list.get(i) > secondMax) {
+            secondMax = list.get(i);
         }
 
         return getSecondMaxRecursively(list, i + 1, firstMax, secondMax);
