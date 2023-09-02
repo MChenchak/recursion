@@ -28,7 +28,7 @@ class SecondMaxTest {
     @Test
     @DisplayName("Все числа >= 0")
     void positive() {
-        List<Integer> list = List.of(500, 500, 45,34,500,1);
+        List<Integer> list = List.of(1000, 500, 45,34,500,5);
 
         int secondMax = SecondMax.getSecondMax(list);
 
