@@ -15,18 +15,19 @@ public class FileRec {
         }
 
         File[] arr = dir.listFiles();
-        return findRecersively(arr, 0, new ArrayList<>());
+        return findRecersively(arr);
     }
 
-    private static List<File> findRecersively(File[] arr, int index, List<File> files) {
-        if (index == arr.length)
-            return files;
+    private static List<File> findRecersively(File[] arr) {
+        List<File> files = new ArrayList<>();
 
-        if (arr[index].isFile())
-            files.add(arr[index]);
-        else if (arr[index].isDirectory())
-            findRecersively(arr[index].listFiles(), 0, files);
-
-        return findRecersively(arr, ++index, files);
+        for (File file : arr) {
+            if (file.isFile()) {
+                files.add(file);
+            } else if (file.isDirectory()) {
+                files.addAll(findRecersively(file.listFiles()));
+            }
+        }
+        return files;
     }
 }
